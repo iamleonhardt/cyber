@@ -1,0 +1,440 @@
+:root {
+  --primary-color: blue;
+
+  --color-bright-blue: #318f9b;
+  --color-dark-green: #0f3820;
+
+  --color-1: #67f3d967;
+  --color-2: #f16f6f;
+
+  --color-3: #0f2b37;
+
+  --cell-bg-color: red;
+  --cell-border: var(--color-1) solid 2px;
+
+  --font-header: 24px;
+  --font-body: 16px;
+}
+
+body {
+  color: #fff;
+  background-color: #04080b;
+  font-family: "roboto";
+  background-size: 40px 40px;
+  background-image: radial-gradient(circle, #293838 1px, rgba(0, 0, 0, 0) 1px);
+}
+
+.pageWrapper {
+  display: grid;
+  grid-template-rows: 1fr 4fr 16fr 4fr;
+  grid-row-gap: 1em;
+}
+
+#menuContainer {
+}
+
+#controls {
+}
+
+#controlsGrid {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em; */
+  text-align: center;
+}
+
+.control {
+  text-align: center;
+  line-height: 80px;
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  margin: 8px;
+  border: 1px solid var(--color-2);
+}
+
+#dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1em;
+}
+
+#mainBoard {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1em;
+}
+
+#playerContainer {
+}
+
+/* #gameGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+} */
+
+#playerElems {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.288);
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 300px;
+}
+
+#circle1 {
+  top: 40px;
+}
+
+#circle2 {
+  top: 140px;
+}
+
+#gameGrid {
+  /* The content width you use on your website */
+  --content-width: 80vw;
+
+  /* The size of the gutter */
+  --gutter: 0px;
+
+  /* The amount of columns */
+  --columns: 12;
+
+  /* This is the calculation for the row height. */
+  --row-size: calc(
+    (var(--content-width) - (var(--gutter) * (var(--columns) - 1))) /
+      var(--columns)
+  );
+
+  display: grid;
+
+  width: 100%;
+  max-width: var(--content-width);
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-auto-rows: var(--row-size);
+
+  grid-column-gap: var(--gutter);
+  grid-row-gap: var(--gutter);
+}
+
+.gameGridCell {
+  /* height: 100px;
+  width: 100px; */
+  border: 1px solid var(--color-3);
+}
+
+#glitchContainer {
+  position: absolute;
+  right: 0;
+}
+
+.cellHeader {
+  height: 12px;
+  background-image: linear-gradient(
+    to right,
+    rgba(15, 44, 58, 1),
+    rgba(15, 44, 58, 0.2),
+    rgba(15, 44, 58, 0.2)
+  );
+  font-size: 12px;
+  padding: 4px;
+}
+
+.cell {
+  position: relative;
+}
+
+.cellCornerLeft,
+.cellCornerRight {
+  position: absolute;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  border-bottom: var(--cell-border);
+}
+
+.cellCornerLeft {
+  left: 0;
+  border-left: var(--cell-border);
+}
+
+.cellCornerRight {
+  right: 0;
+  border-right: var(--cell-border);
+}
+
+#bar {
+  width: 560px;
+  height: 16px;
+  background-color: #5c837e;
+  position: absolute;
+  /* top: 10px;
+  right: 20px; */
+
+  background: repeating-linear-gradient(
+    111deg,
+    rgba(42, 59, 68, 0),
+    rgba(42, 59, 68, 0) 24px,
+    #1e3d3d 24px,
+    #293838 88px
+  );
+}
+
+/* Gradient Test */
+
+.gradDynamic {
+  position: relative;
+}
+
+.gradDynamic:after,
+.gradDynamic:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  z-index: -1;
+}
+
+.gradDynamic:after {
+  background: radial-gradient(circle, #67f3da, transparent);
+  opacity: 0.3;
+  background-size: 400%;
+  animation: colorSpin 10s ease infinite;
+}
+
+.gradDynamic:before {
+  /* background-color: #67f3da; */
+  opacity: 0.3;
+}
+
+@keyframes colorSpin {
+  25% {
+    background-position: bottom right;
+  }
+  50% {
+    background-position: top 0px right 0px;
+  }
+  75% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom left;
+  }
+}
+
+/* Glitch Test */
+
+.glitch {
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 1em;
+  letter-spacing: 8px;
+  font-weight: 400;
+
+  /*Create overlap*/
+  margin: 8px;
+  line-height: 0;
+
+  /*Animation*/
+  animation: glitch1 2.5s infinite;
+}
+
+.glitch:nth-child(2) {
+  color: var(--color-1);
+  background-image: radial-gradient(
+    circle,
+    var(--color-1) 1px,
+    rgba(0, 0, 0, 0) 1px
+  );
+
+  animation: glitch2 6.5s infinite;
+}
+
+.glitch:nth-child(3) {
+  color: var(--color-2);
+  background-image: radial-gradient(
+    circle,
+    var(--color-2) 1px,
+    rgba(0, 0, 0, 0) 1px
+  );
+  animation: glitch3 6.5s infinite;
+}
+
+/*Keyframes*/
+@keyframes glitch1 {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.9deg);
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(0.8deg, -0.1deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: skew(-1deg, 0.2deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: skew(0.4deg, 1deg);
+    opacity: 0.75;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes glitch2 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(-2px, -3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(-5px, -2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(-5px, -1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(-2px, -6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
+
+@keyframes glitch3 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(2px, 3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(5px, 2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(5px, 1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(2px, 6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
